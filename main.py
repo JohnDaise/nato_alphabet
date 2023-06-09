@@ -20,8 +20,21 @@ for (index, row) in student_data_frame.iterrows():
 # Keyword Method with iterrows()
 # {new_key:new_value for (index, row) in df.iterrows()}
 
-#TODO 1. Create a dictionary in this format:
+# TODO 1. Create a dictionary in this format:
 {"A": "Alfa", "B": "Bravo"}
 
-#TODO 2. Create a list of the phonetic code words from a word that the user inputs.
+nato_data = pandas.read_csv("nato_phonetic_alphabet.csv")
+new_dict = {row.letter: row.code for (index, row) in nato_data.iterrows()}
 
+
+# TODO 2. Create a list of the phonetic code words from a word that the user inputs.
+
+# phonetics_code_words = list(new_dict.values())
+# phonetics_code_words = [code_word for code_word in new_dict.values()]
+# print(phonetics_code_words)
+
+
+answer = input("Enter a word: ")
+letter_list = [letter.upper() for letter in answer]
+code_word_list = [new_dict[letter] for letter in letter_list]
+print(code_word_list)
