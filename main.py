@@ -33,8 +33,17 @@ new_dict = {row.letter: row.code for (index, row) in nato_data.iterrows()}
 # phonetics_code_words = [code_word for code_word in new_dict.values()]
 # print(phonetics_code_words)
 
+def generate_nato():
+    answer = input("Enter a word: ")
+    letter_list = [letter.upper() for letter in answer]
+    try:
+        code_word_list = [new_dict[letter] for letter in letter_list]
+    except KeyError:
+        print("Please enter only letters from the alphabet")
+        generate_nato()
+    else:
+        print(code_word_list)
 
-answer = input("Enter a word: ")
-letter_list = [letter.upper() for letter in answer]
-code_word_list = [new_dict[letter] for letter in letter_list]
-print(code_word_list)
+
+generate_nato()
+
